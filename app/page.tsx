@@ -13,8 +13,14 @@ export default function Home() {
 
   const adjustHeight = () => {
     if (textareaRef.current) {
+      // 保存当前滚动位置
+      const scrollY = window.scrollY;
+      
       textareaRef.current.style.height = 'auto';
       textareaRef.current.style.height = textareaRef.current.scrollHeight + 'px';
+      
+      // 恢复滚动位置，防止页面跳动
+      window.scrollTo(0, scrollY);
     }
   };
 
